@@ -15,18 +15,18 @@ class CuentaBancaria():
     #Get / Set
 
     # Permiso de lectura para leer la variable numero_cuenta que hemos hecho privada con la encapsulacion
-    def get_numero_cuenta(self):
+    @property
+    def numero_cuenta(self):
         return self.__numero_cuenta
-
-    def get_saldo(self):
+    @property
+    def saldo(self):
         return self.__saldo
-
     # Metodos
     def __generar_numero_cuenta(self):
         self.__numero_cuenta = random.randint(0, 999999999999)
 
     def añadir_saldo(self, dinero):
-        if dinero > 0 and dinero < 500:
+        if dinero > 0 and dinero <= 500:
             self.__saldo += dinero
 
     def sacar_dinero(self, dinero):
@@ -35,10 +35,7 @@ class CuentaBancaria():
 
 
 mi_cuenta = CuentaBancaria('Luis Isarria')
-print(mi_cuenta.get_numero_cuenta())
-print(mi_cuenta.get_saldo())
-mi_cuenta.añadir_saldo(500)
-print(mi_cuenta.get_saldo())
-mi_cuenta.sacar_dinero(99)
-print(mi_cuenta.get_saldo())
+print(mi_cuenta.numero_cuenta())
+print(mi_cuenta.saldo())
+
 
