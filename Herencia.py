@@ -9,38 +9,32 @@ class Punto2D():
     def coord2D(self):
         return [self.x, self.y]
 
+class Color():
+    rojo = 'ROJO'
+    negro = 'NEGRO'
+    verde = 'VERDE'
+    actual = ''
 
-class _Punto3D():
-    x = 0
-    y = 0
+    def __init__(self, color):
+        self.actual = color
+
+class Punto3D(Punto2D, Color):
     z = 0
 
     def __init__(self, x, y, z):
-        self.x = x
-        self.y = y
-        self.z = z
-
-    def coord2D(self):
-        return [self.x, self.y]
-
-    def coord3D(self):
-        return [self.x, self.y, self.z]
-
-
-class punto3D(Punto2D):
-    z = 0
-
-    def __init__(self, x, y, z):
-        super().__init__(x, y)
+        Punto2D.__init__(self,x, y)
+        Color.__init__(self,'NEGRO')
         self.z = z
 
     def coord3D(self):
-        return [self.x, self.y, self.z]
+        return [self.x, self.y, self.z, self.actual]
 
 
 p1 = Punto2D(1, 0)
-p2 = _Punto3D(1, 0, 5)
+p2 = Punto3D(1, 1, 5)
+
 
 print(p1.coord2D())
 print(p2.coord2D())
 print(p2.coord3D())
+
